@@ -20,24 +20,24 @@ sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
 ### Step 2: Enable IPv4 Packet Forwarding
 
-#### sysctl params required by setup, params persist across reboots
+#### sysctl params required by setup, params persist across reboots - run command on  - Worker Node1 and Worker Node2
 ```bash
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 net.ipv4.ip_forward = 1
 EOF
 ```
 
-#### Apply sysctl params without reboot
+#### Apply sysctl params without reboot - run command on  - Worker Node1 and Worker Node2
 ```bash
 sudo sysctl --system
 ```
 
-### Step 3: Verify IPv4 Packet Forwarding
+### Step 3: Verify IPv4 Packet Forwarding - run command on  - Worker Node1 and Worker Node2
 ```bash
 sysctl net.ipv4.ip_forward
 ```
 
-### Step 4: Install containerd
+### Step 4: Install containerd - run command on  - Worker Node1 and Worker Node2
 ```bash
 # Add Docker's official GPG key:
 sudo apt-get update
